@@ -81,8 +81,13 @@ public class MainVerticle extends AbstractVerticle {
   }
 
   private boolean isPalindromicSubstring(String name, String password) {
-    if (name.contains(password) && isPalindrome(password, 0, password.length() - 1)) {
-      return true;
+    for(int i=0; i<name.length(); i++){
+      for(int j=i+1; j<name.length(); j++){
+        String substr = name.substring(i, j);
+        if(isPalindrome(substr, 0, substr.length()-1) && password.equals(substr)){
+          return true;
+        }
+      }
     }
     return false;
   }
